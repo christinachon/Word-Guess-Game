@@ -13,4 +13,4 @@ for(var i=0; i< word.length; i++){
     }
 
 //displays the random word
-document.getElementById("blank").innerHTML = answerArray;
+document.getElementById("blank").innerHTML = (answerArray.join(""));
