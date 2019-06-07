@@ -15,14 +15,18 @@ h1{
     font-size: 2em;
 }
 p{
-    color: #494b4b;
+    color: white;
+    size: 1.5em;
+    line-height: 30px;
+}
+
+#blank{
+    font-size: 2em;
+    padding: 5px;
 }
 
 .banner {
     width: 95%;
     height: 95%;
     padding: 15px;
-}
-#directions {
-    color: white;
 }
