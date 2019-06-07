@@ -5,7 +5,7 @@ var words = ["link", "hyrule", "ganondorf", "kakariko", "dekutree", "zelda"];
 var word = words[Math.floor(Math.random() * words.length)];
 
 //changes random word to blanks
-var answerArray = [];
+var answerArray = [""];
 for(var i=0; i< word.length; i++){
     answerArray[i]= "_ ";
     }
@@ -18,7 +18,7 @@ var wrongGuess = [];
 document.getElementById("wrongguess-text").innerHTML = wrongGuess;
 
 // sets number of guesses left
-var guessesLeft = 15;
+var guessesLeft = 10;
 document.getElementById("guessesleft-text").innerHTML = guessesLeft;
 
 //sets wins
@@ -29,19 +29,24 @@ document.getElementById("wins-text").innerHTML = wins;
 var lose = 0;
 document.getElementById("losses-text").innerHTML = lose;
 
-//  MAIN GAME PART // 
+// ---------  MAIN GAME PART ---------------- // 
 
-//get guess from user
+// guessesleft goes down if letter is not in word and goes to wrongGuess
 document.onkeyup = function(event){
     var userKey = event.key;
-    for (var j=0; j< word.length; j++){
+    if (word.includes(userKey) === false) {
+        wrongGuess.push(userKey);
+        document.getElementById("wrongguess-text").innerHTML = wrongGuess;
+        guessesLeft--;
+        document.getElementById("guessesleft-text").innerHTML = guessesLeft;
+    };
+        for (var j=0; j< word.length; j++){
         if (word[j] === userKey) {
             answerArray[j] = userKey;
             document.getElementById("blank").innerHTML = (answerArray.join("").toUpperCase());
             }
     }
-
-// guessesleft goes down if letter is not in word and goes to wrongGuess
+}
 
 
 // if guesses reach 0 then game over alert
@@ -50,6 +55,6 @@ document.onkeyup = function(event){
         lose++;
         document.getElementById("losses-text").innerHTML = lose;
     }
-}
 
-//if all letters are foud then win alert
+
+//if all letters are found then win alert
