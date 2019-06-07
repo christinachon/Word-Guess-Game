@@ -13,8 +13,12 @@ for(var i=0; i< word.length; i++){
 //displays the random word with no comma between
 document.getElementById("blank").innerHTML = (answerArray.join(""));
 
-// sets number of guesses left and displays
-var guessesLeft = word.length;
+// sets wrong guessed letters
+var wrongGuess = [];
+document.getElementById("wrongguess-text").innerHTML = wrongGuess;
+
+// sets number of guesses left
+var guessesLeft = 15;
 document.getElementById("guessesleft-text").innerHTML = guessesLeft;
 
 //sets wins
@@ -25,6 +29,8 @@ document.getElementById("wins-text").innerHTML = wins;
 var lose = 0;
 document.getElementById("losses-text").innerHTML = lose;
 
+//  MAIN GAME PART // 
+
 //get guess from user
 document.onkeyup = function(event){
     var userKey = event.key;
@@ -32,9 +38,18 @@ document.onkeyup = function(event){
         if (word[j] === userKey) {
             answerArray[j] = userKey;
             document.getElementById("blank").innerHTML = (answerArray.join("").toUpperCase());
-            guessesLeft--;
-            document.getElementById("guessesleft-text").innerHTML = guessesLeft;
-            console.log (guessesLeft);
-        }
+            }
+    }
+
+// guessesleft goes down if letter is not in word and goes to wrongGuess
+
+
+// if guesses reach 0 then game over alert
+    if (guessesLeft === 0){
+        alert("You Lose!");
+        lose++;
+        document.getElementById("losses-text").innerHTML = lose;
     }
 }
+
+//if all letters are foud then win alert
