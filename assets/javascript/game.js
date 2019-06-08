@@ -45,16 +45,16 @@ document.onkeyup = function(event){
             answerArray[j] = userKey;
             document.getElementById("blank").innerHTML = (answerArray.join("").toUpperCase());
             }
+    }    if (guessesLeft === 0){
+        alert("You Lose!");
+        lose++;
+        document.getElementById("losses-text").innerHTML = lose;
     }
 }
 
 
 // if guesses reach 0 then game over alert
-    if (guessesLeft === 0){
-        alert("You Lose!");
-        lose++;
-        document.getElementById("losses-text").innerHTML = lose;
-    }
+
 
 
 //if all letters are found then win alert
