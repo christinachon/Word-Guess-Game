@@ -45,6 +45,7 @@ document.onkeyup = function(event){
             answerArray[j] = userKey;
             document.getElementById("blank").innerHTML = (answerArray.join("").toUpperCase());
             }
+            // if guesses reach 0 then game over alert
     }    if (guessesLeft === 0){
         alert("You Lose!");
         lose++;
@@ -53,8 +54,10 @@ document.onkeyup = function(event){
 }
 
 
-// if guesses reach 0 then game over alert
 
 
 
-//if all letters are found then win alert
+/* To Do list:
+if all letters are found then win alert
+game restarts with win or loss
+previously guessed letters don't count
