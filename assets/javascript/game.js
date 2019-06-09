@@ -14,10 +14,10 @@ for(var i=0; i< word.length; i++){
 document.getElementById("blank").innerHTML = (answerArray.join(""));
 
 // sets wrong guessed letters
-var wrongGuess = [];
-document.getElementById("wrongguess-text").innerHTML = wrongGuess;
+var wrongGuess = [""];
+document.getElementById("wrongguess-text").innerHTML = (wrongGuess.join(" ").toUpperCase());
 
-// sets number of guesses left
+// sets number of guesses lef
 var guessesLeft = 10;
 document.getElementById("guessesleft-text").innerHTML = guessesLeft;
 
@@ -36,7 +36,7 @@ document.onkeyup = function(event){
     var userKey = event.key;
     if (word.includes(userKey) === false) {
         wrongGuess.push(userKey);
-        document.getElementById("wrongguess-text").innerHTML = wrongGuess;
+        document.getElementById("wrongguess-text").innerHTML = (wrongGuess.join(" ").toUpperCase());
         guessesLeft--;
         document.getElementById("guessesleft-text").innerHTML = guessesLeft;
     };
@@ -52,12 +52,3 @@ document.onkeyup = function(event){
         document.getElementById("losses-text").innerHTML = lose;
     }
 }
-
-
-
-
-
-/* To Do list:
-if all letters are found then win alert
-game restarts with win or loss
-previously guessed letters don't count
