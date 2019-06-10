@@ -29,12 +29,14 @@ document.getElementById("wins-text").innerHTML = wins;
 var lose = 0;
 document.getElementById("losses-text").innerHTML = lose;
 
+var lettersRemaining = word.length;
+
 // ---------  MAIN GAME PART ---------------- // 
 
 // guessesleft goes down if letter is not in word and goes to wrongGuess
 document.onkeyup = function(event){
     var userKey = event.key;
-    if (word.includes(userKey) === false) {
+        if (word.includes(userKey) === false) {
         wrongGuess.push(userKey);
         document.getElementById("wrongguess-text").innerHTML = (wrongGuess.join(" ").toUpperCase());
         guessesLeft--;
@@ -44,11 +46,20 @@ document.onkeyup = function(event){
         if (word[j] === userKey) {
             answerArray[j] = userKey;
             document.getElementById("blank").innerHTML = (answerArray.join("").toUpperCase());
+            lettersRemaining --;
+            console.log(lettersRemaining);
             }
             // if guesses reach 0 then game over alert
-    }    if (guessesLeft === 0){
+    };
+        if (guessesLeft === 0){
         alert("You Lose!");
         lose++;
         document.getElementById("losses-text").innerHTML = lose;
-    }
+    };
+        if (lettersRemaining === 0){
+            alert("You guessed the word!");
+            wins++;
+            document.getElementById("wins-text").innerHTML = wins;
+        };
+
 }
