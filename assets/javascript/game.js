@@ -43,13 +43,12 @@ document.onkeyup = function(event){
         document.getElementById("guessesleft-text").innerHTML = guessesLeft;
     };
         for (var j=0; j< word.length; j++){
-        if (word[j] === userKey) {
+        if (word[j] === userKey && answerArray.includes(userKey) === false) {
             answerArray[j] = userKey;
             document.getElementById("blank").innerHTML = (answerArray.join("").toUpperCase());
             lettersRemaining --;
             console.log(lettersRemaining);
             }
-            // if guesses reach 0 then game over alert
     };
         if (guessesLeft === 0){
         alert("You Lose!");
