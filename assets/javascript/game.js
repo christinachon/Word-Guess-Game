@@ -1,34 +1,10 @@
-// my array of words
 var words = ["link", "hyrule", "sword", "shield", "skyward", "zelda"];
-
-//pick a random word from the words array
 var word = words[Math.floor(Math.random() * words.length)];
-
-//changes random word to blanks
 var answerArray = [""];
-for(var i=0; i< word.length; i++){
-    answerArray[i]= "_ ";
-    }
-
-//displays the random word with no comma between
-document.getElementById("blank").innerHTML = (answerArray.join(""));
-
-// sets wrong guessed letters
 var wrongGuess = [""];
-document.getElementById("wrongguess-text").innerHTML = (wrongGuess.join(" ").toUpperCase());
-
-// sets number of guesses lef
 var guessesLeft = 10;
-document.getElementById("guessesleft-text").innerHTML = guessesLeft;
-
-//sets wins
 var wins = 0;
-document.getElementById("wins-text").innerHTML = wins;
-
-//sets losses
 var lose = 0;
-document.getElementById("losses-text").innerHTML = lose;
-
 var lettersRemaining = word.length;
 var correctLetters =[""];
 
@@ -48,9 +24,10 @@ function newGame(){
     correctLetters =[""];
     lettersRemaining = word.length;
 };
+
 // ---------  MAIN GAME PART ---------------- // 
 newGame();
-// guessesleft goes down if letter is not in word and goes to wrongGuess
+
 document.onkeyup = function(event){
     var userKey = event.key;
     if (wrongGuess.includes(userKey) === true || correctLetters.includes(userKey) === true) {
