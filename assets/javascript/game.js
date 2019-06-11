@@ -1,5 +1,5 @@
 // my array of words
-var words = ["link", "hyrule", "ganondorf", "kakariko", "dekutree", "zelda"];
+var words = ["link", "hyrule", "sword", "shield", "skyward", "zelda"];
 
 //pick a random word from the words array
 var word = words[Math.floor(Math.random() * words.length)];
@@ -30,24 +30,30 @@ var lose = 0;
 document.getElementById("losses-text").innerHTML = lose;
 
 var lettersRemaining = word.length;
+var correctLetters =[""];
 
 // ---------  MAIN GAME PART ---------------- // 
 
 // guessesleft goes down if letter is not in word and goes to wrongGuess
 document.onkeyup = function(event){
     var userKey = event.key;
-        if (word.includes(userKey) === false) {
+    if (wrongGuess.includes(userKey) === true || correctLetters.includes(userKey) === true) {
+        return;
+    } else { 
+    if (word.includes(userKey) === false) {
         wrongGuess.push(userKey);
         document.getElementById("wrongguess-text").innerHTML = (wrongGuess.join(" ").toUpperCase());
         guessesLeft--;
         document.getElementById("guessesleft-text").innerHTML = guessesLeft;
     };
         for (var j=0; j< word.length; j++){
-        if (word[j] === userKey && answerArray.includes(userKey) === false) {
+        if (word[j] === userKey) {
             answerArray[j] = userKey;
             document.getElementById("blank").innerHTML = (answerArray.join("").toUpperCase());
+            correctLetters.push(userKey);
             lettersRemaining --;
             console.log(lettersRemaining);
+            console.log(correctLetters);
             }
     };
         if (guessesLeft === 0){
@@ -60,5 +66,5 @@ document.onkeyup = function(event){
             wins++;
             document.getElementById("wins-text").innerHTML = wins;
         };
-
+    }
 }
