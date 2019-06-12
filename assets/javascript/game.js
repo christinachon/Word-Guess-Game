@@ -8,6 +8,16 @@ var lose = 0;
 var lettersRemaining = word.length;
 var correctLetters =[""];
 
+function mySound(){
+    var sound = document.getElementById("audio");
+    sound.play();
+};
+
+function myLoseSound(){
+    var myLoseSound = document.getElementById("loseaudio");
+    myLoseSound.play();
+};
+
 function newGame(){
     document.getElementById("wins-text").innerHTML = wins;
     document.getElementById("losses-text").innerHTML = lose;
@@ -23,6 +33,7 @@ function newGame(){
     document.getElementById("guessesleft-text").innerHTML = guessesLeft;
     correctLetters =[""];
     lettersRemaining = word.length;
+
 };
 
 // ---------  MAIN GAME PART ---------------- // 
@@ -48,12 +59,14 @@ document.onkeyup = function(event){
             }
     };
       if (guessesLeft === 0){
+          myLoseSound();
           alert("You didn't guess the word.")
           lose++;
           document.getElementById("losses-text").innerHTML = lose;
           newGame();
     };
         if (lettersRemaining === 0){
+            mySound();
             alert("You guessed the word! It was " + word + ".")
             wins++;
             document.getElementById("wins-text").innerHTML = wins;
