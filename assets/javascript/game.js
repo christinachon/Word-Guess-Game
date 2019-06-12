@@ -1,4 +1,5 @@
-var words = ["link", "hyrule", "sword", "shield", "skyward", "zelda"];
+var words = ["link", "hyrule", "sword", "shield", "skyward", "zelda", "dekutree", "ganondorf", "adventure", "kokiri", "slingshot", "arrow", "fairy", "twilight", "medallion", "majora", "ocarina", "impa", "zora", "phantom", "potion", "saria", "temple", "heart", "sheikah", "hylian", "goron", "gerudo", "triforce" ,"navi"];
+
 var word = words[Math.floor(Math.random() * words.length)];
 var answerArray = [""];
 var wrongGuess = [""];
